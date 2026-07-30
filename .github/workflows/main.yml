@@ -24,6 +24,6 @@ jobs:
     - name: 봇 실행
       # ⚠️ 이 부분에서 깃허브 비밀키(secrets)를 환경 변수(env)로 주입합니다.
       env:
-        discordbotrun: ${{ secrets.token }} 
+        discordbotrun: ${{ secrets.TOKEN }} 
       run: |
         python main.py
