@@ -1,0 +1,29 @@
+name: Run Discord Bot
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 코드 체크아웃
+      uses: actions/checkout@v4
+
+    - name: 파이썬 설정
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: 라이브러리 설치
+      run: |
+        pip install -r requirements.txt
+
+    - name: 봇 실행
+      # ⚠️ 이 부분에서 깃허브 비밀키(secrets)를 환경 변수(env)로 주입합니다.
+      env:
+        discordbotrun: ${{ secrets.token }} 
+      run: |
+        python main.py
